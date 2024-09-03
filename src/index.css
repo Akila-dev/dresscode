@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+h1 {
+	@apply text-xl md:text-[2rem] lg:text-[3rem] leading-[120%] font-semibold;
+}
+
+.flex-center {
+	@apply flex items-center justify-center;
+}
+
+.blend-text {
+	@apply bg-white text-transparent bg-clip-text mix-blend-difference;
+}
