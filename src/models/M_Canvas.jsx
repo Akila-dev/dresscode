@@ -11,7 +11,7 @@ export default function Canvas(props) {
 				scale={0.75}
 				rotation={[2, 2, -2]}
 				dispose={null}
-				position={[-0.3, 0, 0]}
+				position={[-0.1, 0, 0]}
 			>
 				<Float
 					speed={5} // Animation speed, defaults to 1
