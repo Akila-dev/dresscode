@@ -3,7 +3,12 @@
 /* eslint-disable react/no-unknown-property */
 import { Suspense, useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useGLTF, Environment, MeshReflectorMaterial } from '@react-three/drei';
+import {
+	useGLTF,
+	Environment,
+	MeshReflectorMaterial,
+	PerformanceMonitor,
+} from '@react-three/drei';
 import { easing } from 'maath';
 import { useSnapshot } from 'valtio';
 import { state } from '../store';
@@ -113,13 +118,15 @@ const ModelCarousel = () => {
 		return () => clearInterval(interval);
 	}, [incrementFactor, positions.length]);
 
+	const [dpr, setDpr] = useState(1.5);
+
 	return (
 		<div className="w-full h-screen overflow-hidden relative bg-black">
 			<div className="w-full h-full overflow-hidden bg-black relative">
 				<Cover activeId={incrementFactor} />
 				<Canvas
 					shadows
-					dpr={[1, 2]}
+					dpr={dpr}
 					gl={{ preserveDrawingBuffer: true }}
 					camera={{
 						fov: 22.9,
@@ -129,94 +136,99 @@ const ModelCarousel = () => {
 						// rotation: [-35.94, 40.66, 25.28],
 					}}
 				>
-					<Suspense>
-						<ambientLight intensity={0.5} />
-						<pointLight
-							intensity={100}
-							decay={2}
-							position={[4.076, 5.904, -1.005]}
-							rotation={[-1.839, 0.602, 1.932]}
-						/>
-						<pointLight
-							intensity={200}
-							decay={2}
-							position={[5.082, 3.76, 1.074]}
-							rotation={[-1.839, 0.602, 1.932]}
-						/>
-						<Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/potsdamer_platz_1k.hdr" />
-						{/* <StarsCanvas /> */}
-						{/* <Background /> */}
-						<fog attach="fog" args={['#000', 0, 45]} />
-						<group
-							position={
-								width >= 700
-									? [0.1, 0.1, 0]
-									: width >= 1024
-									? [0.1, 0.1, 0]
-									: [-0.4, 0.2, -0.3]
-							}
-							scale={width >= 700 ? 0.75 : width >= 1024 ? 1 : 0.6}
-						>
+					<PerformanceMonitor
+						onIncline={() => setDpr(2)}
+						onDecline={() => setDpr(1)}
+					>
+						<Suspense>
+							<ambientLight intensity={0.5} />
+							<pointLight
+								intensity={100}
+								decay={2}
+								position={[4.076, 5.904, -1.005]}
+								rotation={[-1.839, 0.602, 1.932]}
+							/>
+							<pointLight
+								intensity={200}
+								decay={2}
+								position={[5.082, 3.76, 1.074]}
+								rotation={[-1.839, 0.602, 1.932]}
+							/>
+							<Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/potsdamer_platz_1k.hdr" />
+							{/* <StarsCanvas /> */}
+							{/* <Background /> */}
+							<fog attach="fog" args={['#000', 0, 45]} />
 							<group
-								position={[7.359, 3.5 - 4.958, 15 - 6.926]}
-								rotation={[0.1, 0.1, 0.2]}
+								position={
+									width >= 700
+										? [0.1, 0.1, 0]
+										: width >= 1024
+										? [0.1, 0.1, 0]
+										: [-0.4, 0.2, -0.3]
+								}
+								scale={width >= 700 ? 0.75 : width >= 1024 ? 1 : 0.6}
 							>
-								<Floor />
-							</group>
-							<ModelContainer
-								positions={positions}
-								initial={positions[0]}
-								incrementFactor={incrementFactor}
-								id={0}
-							>
-								<M_Fashion />
-							</ModelContainer>
-							<ModelContainer
-								positions={positions}
-								initial={positions[4]}
-								incrementFactor={incrementFactor}
-								id={4}
-							>
-								<W_Fashion />
-							</ModelContainer>
-							<ModelContainer
-								positions={positions}
-								initial={positions[3]}
-								incrementFactor={incrementFactor}
-								id={3}
-							>
-								<Accessories />
-							</ModelContainer>
-							<ModelContainer
-								positions={positions}
-								initial={positions[2]}
-								incrementFactor={incrementFactor}
-								id={2}
-							>
-								<Jewelries />
-							</ModelContainer>
-							<ModelContainer
-								positions={positions}
-								initial={positions[1]}
-								incrementFactor={incrementFactor}
-								id={1}
-							>
-								<CanvasShoes />
-							</ModelContainer>
+								<group
+									position={[7.359, 3.5 - 4.958, 15 - 6.926]}
+									rotation={[0.1, 0.1, 0.2]}
+								>
+									<Floor />
+								</group>
+								<ModelContainer
+									positions={positions}
+									initial={positions[0]}
+									incrementFactor={incrementFactor}
+									id={0}
+								>
+									<M_Fashion />
+								</ModelContainer>
+								<ModelContainer
+									positions={positions}
+									initial={positions[4]}
+									incrementFactor={incrementFactor}
+									id={4}
+								>
+									<W_Fashion />
+								</ModelContainer>
+								<ModelContainer
+									positions={positions}
+									initial={positions[3]}
+									incrementFactor={incrementFactor}
+									id={3}
+								>
+									<Accessories />
+								</ModelContainer>
+								<ModelContainer
+									positions={positions}
+									initial={positions[2]}
+									incrementFactor={incrementFactor}
+									id={2}
+								>
+									<Jewelries />
+								</ModelContainer>
+								<ModelContainer
+									positions={positions}
+									initial={positions[1]}
+									incrementFactor={incrementFactor}
+									id={1}
+								>
+									<CanvasShoes />
+								</ModelContainer>
 
-							{/* <M_Fashion position={[0, 0, 0]} scale={1} />
+								{/* <M_Fashion position={[0, 0, 0]} scale={1} />
 							<M_Fashion position={[-6.5, -1.5, -1]} scale={0.5} />
 							<M_Fashion position={[-3.5, -0.5, -2]} scale={0.5} />
 							<M_Fashion position={[-0.2, 0.4, -2]} scale={0.4} />
 							<M_Fashion position={[2.5, 1.1, -1]} scale={0.35} /> */}
 
-							{/* <M_Fashion /> */}
-							{/* <W_Fashion /> */}
-							{/* <Accessories /> */}
-							{/* <Jewelries /> */}
-							{/* <CanvasShoes /> */}
-						</group>
-					</Suspense>
+								{/* <M_Fashion /> */}
+								{/* <W_Fashion /> */}
+								{/* <Accessories /> */}
+								{/* <Jewelries /> */}
+								{/* <CanvasShoes /> */}
+							</group>
+						</Suspense>
+					</PerformanceMonitor>
 				</Canvas>
 			</div>
 			<Cover activeId={incrementFactor} />
