@@ -2,7 +2,7 @@
 
 import { useGLTF } from '@react-three/drei';
 
-export default function Model(props) {
+export default function W_Fashion(props) {
 	const { nodes, materials } = useGLTF('w_fashion-transformed.glb');
 	return (
 		<group {...props} dispose={null}>
