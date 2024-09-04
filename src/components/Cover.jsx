@@ -69,6 +69,7 @@ const Cover = ({ activeId }) => {
 		animate: (i) => ({
 			opacity: [0, 1],
 			y: [15, 0],
+			// rotateX: [90, 0],
 
 			transition: {
 				type: 'spring',

@@ -35,7 +35,7 @@ import {
 } from '../models';
 
 function Loader() {
-	const { active, progress, errors, item, loaded, total } = useProgress();
+	const { progress } = useProgress();
 	return (
 		<Html center>
 			<div className="flex-center a">{progress} % loaded</div>
@@ -109,6 +109,7 @@ const Floor = () => (
 );
 
 const ModelCarousel = () => {
+	const { progress } = useProgress();
 	const [incrementFactor, setIncrementFactor] = useState(0);
 	const positions = [
 		{ x: -0.2, y: 0, z: 0, scale: 1 },
@@ -119,15 +120,17 @@ const ModelCarousel = () => {
 	];
 	const { width, height } = useDeviceSize();
 	useEffect(() => {
-		const interval = setInterval(() => {
-			if (incrementFactor + 1 < positions.length) {
-				setIncrementFactor(incrementFactor + 1);
-			} else {
-				setIncrementFactor(0);
-			}
-		}, 5000);
-		return () => clearInterval(interval);
-	}, [incrementFactor, positions.length]);
+		if (progress >= 100) {
+			const interval = setInterval(() => {
+				if (incrementFactor + 1 < positions.length) {
+					setIncrementFactor(incrementFactor + 1);
+				} else {
+					setIncrementFactor(0);
+				}
+			}, 5000);
+			return () => clearInterval(interval);
+		}
+	}, [progress, incrementFactor, positions.length]);
 
 	const [dpr, setDpr] = useState(1.5);
 
