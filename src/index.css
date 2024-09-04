@@ -7,13 +7,40 @@
 }
 
 h1 {
-	@apply text-xl md:text-[2rem] lg:text-[3rem] leading-[120%] font-semibold;
+	@apply text-[10vw] md:text-[7.5vw] lg:text-[4.5vw] leading-[120%] font-semibold;
+}
+
+p {
+	@apply text-[5vw] md:text-[3vw] lg:text-[1.35vw] leading-[130%];
+}
+
+a,
+.a {
+	@apply text-[4vw] md:text-[3vw]  lg:text-[1vw] leading-[120%];
 }
 
 .flex-center {
 	@apply flex items-center justify-center;
 }
+.flex-bottom {
+	@apply flex items-end;
+}
 
+.flex-between {
+	@apply flex items-center justify-between w-full;
+}
+
+.container {
+	@apply px-4 md:px-[2rem] lg:px-[3rem] !w-full max-w-none;
+}
 .blend-text {
 	@apply bg-white text-transparent bg-clip-text mix-blend-difference;
 }
+
+.btn {
+	@apply text-sm md:text-lg inline-block min-w-[200px] px-4 py-2 rounded-md bg-white;
+}
+
+/* .btn-1 {
+	@apply text-red-500;
+} */

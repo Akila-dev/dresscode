@@ -80,29 +80,15 @@ const Cover = ({ activeId }) => {
 	};
 	return (
 		<div className="w-full h-full absolute top-0 left-0 flex-bottom text-cente">
-			{/* <div className="max-w-[500px] space-y-3">
-				<h1 className="blend-text uppercase">{coverText[2].header}</h1>
-				<p className="blend-text">{coverText[2].text}</p>
-				<div className="pt-2 flex flex-wrap gap-3 justify-center">
-					{coverText[2].buttons.map(({ text, link }, i) => (
-						<a
-							key={i}
-							href={link}
-							className={`btn ${i % 2 ? 'btn-2' : 'btn-1'}`}
-						>
-							{text}
-						</a>
-					))}
-				</div>
-			</div> */}
-			<div className="container flex-between py-[7vh] lg:py-[7vh]">
+			<div className="container flex-between py-5 lg:py-[7vh]">
 				<div className="relative">
-					<div className="max-w-none md:max-w-[500px] lg:max-w-[30vw] space-y-[2.5vh] lg:space-y-[3vh] opacity-0 pointer-events-none">
+					{/* Hidden */}
+					<div className="max-w-[30vw] lg:space-y-[3vh] opacity-0 pointer-events-none">
 						<h1 className="blend-text uppercase">
 							{coverText[activeId].header}
 						</h1>
 						<p className="blend-text">{coverText[activeId].text}</p>
-						<div className="flex flex-wrap gap-[4vw] lg:gap-[1.5vw]">
+						<div className="flex flex-wrap gap-[1.5vw]">
 							{coverText[activeId].buttons.map(({ text, link }, i) => (
 								<div
 									key={i}
@@ -116,13 +102,14 @@ const Cover = ({ activeId }) => {
 						</div>
 					</div>
 
+					{/* Displayed */}
 					{coverText.map(
 						(item, i) =>
 							i === activeId && (
 								<motion.div
 									animate="animate"
 									key={i}
-									className="max-w-none md:max-w-[500px] lg:max-w-[30vw] space-y-[2.5vh] lg:space-y-[3vh]"
+									className="max-w-[30vw] lg:space-y-[3vh]"
 								>
 									<motion.h1
 										variants={variants}
@@ -138,7 +125,7 @@ const Cover = ({ activeId }) => {
 									>
 										{item.text}
 									</motion.p>
-									<div className="flex flex-wrap gap-[4vw] lg:gap-[1.5vw]">
+									<div className="flex flex-wrap gap-[1.5vw]">
 										{item.buttons.map(({ text, link }, j) => (
 											<motion.a
 												variants={variants}
@@ -160,29 +147,6 @@ const Cover = ({ activeId }) => {
 								</motion.div>
 							)
 					)}
-
-					{/* Displayed */}
-					{/* <div className="max-w-[30vw] lg:space-y-[3vh]">
-					<h1 className="blend-text uppercase">{coverText[2].header}</h1>
-					<p className="blend-text">{coverText[2].text}</p>
-					<div className="flex flex-wrap gap-[1.5vw]">
-						{coverText[2].buttons.map(({ text, link }, i) => (
-							<motion.a
-								whileHover={{ scale: 1.1, color: '#' }}
-								whileTap={{ scale: 0.9 }}
-								transition={{
-									type: 'spring',
-								}}
-								key={i}
-								href={link}
-								className={`blend-text border-b border-gray-500 pb-[2px] uppercase`}
-							>
-								<BsArrowReturnRight className="text-white inline-block mr-[6px]" />
-								{text}
-							</motion.a>
-						))}
-					</div>
-				</div> */}
 				</div>
 			</div>
 		</div>

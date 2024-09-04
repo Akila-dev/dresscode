@@ -12,12 +12,19 @@ export default function CanvasShoes(props) {
 				position={[-0.4, -0.4, 0]}
 				dispose={null}
 			>
-				<mesh
-					geometry={nodes.defaultMaterial.geometry}
-					material={materials.NikeShoe}
-					position={[-0.067, 0.109, -0.673]}
-					rotation={[-1.468, 0.25, 1.878]}
-				/>
+				<Float
+					speed={2}
+					rotationIntensity={1}
+					floatIntensity={1}
+					floatingRange={[0, 0.1]}
+				>
+					<mesh
+						geometry={nodes.defaultMaterial.geometry}
+						material={materials.NikeShoe}
+						position={[-0.067, 0.109, -0.673]}
+						rotation={[-1.468, 0.25, 1.878]}
+					/>
+				</Float>
 			</group>
 		</group>
 	);

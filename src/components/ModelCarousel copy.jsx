@@ -10,7 +10,6 @@ import { state } from '../store';
 import { motion } from 'framer-motion-3d';
 import * as THREE from 'three';
 
-import useDeviceSize from '../utils/useDeviceSize';
 import Cover from './Cover';
 import StarsCanvas from './StarsCanvas';
 
@@ -101,7 +100,6 @@ const ModelCarousel = () => {
 		{ x: -1, y: -0.1, z: -3, scale: 0.2 },
 		{ x: 2.5, y: 1.1, z: -1, scale: 0.35 },
 	];
-	const { width, height } = useDeviceSize();
 	useEffect(() => {
 		const interval = setInterval(() => {
 			if (incrementFactor + 1 < positions.length) {
@@ -112,9 +110,8 @@ const ModelCarousel = () => {
 		}, 5000);
 		return () => clearInterval(interval);
 	}, [incrementFactor, positions.length]);
-
 	return (
-		<div className="w-full h-screen overflow-hidden relative bg-black">
+		<div className="w-full h-screen overflow-hidden relative">
 			<div className="w-full h-full overflow-hidden bg-black relative">
 				<Cover activeId={incrementFactor} />
 				<Canvas
@@ -148,21 +145,12 @@ const ModelCarousel = () => {
 						{/* <Background /> */}
 						<fog attach="fog" args={['#000', 0, 45]} />
 						<group
-							position={
-								width >= 700
-									? [0.1, 0.1, 0]
-									: width >= 1024
-									? [0.1, 0.1, 0]
-									: [-0.4, 0.2, -0.3]
-							}
-							scale={width >= 700 ? 0.75 : width >= 1024 ? 1 : 0.6}
+							position={[7.359, 3.5 - 4.958, 15 - 6.926]}
+							rotation={[0.1, 0.1, 0.2]}
 						>
-							<group
-								position={[7.359, 3.5 - 4.958, 15 - 6.926]}
-								rotation={[0.1, 0.1, 0.2]}
-							>
-								<Floor />
-							</group>
+							<Floor />
+						</group>
+						<group position={[-0.2, 0.1, 0]} scale={1}>
 							<ModelContainer
 								positions={positions}
 								initial={positions[0]}
