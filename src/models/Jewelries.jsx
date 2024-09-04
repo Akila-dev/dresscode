@@ -6,14 +6,14 @@ export default function Jewelries(props) {
 	const { nodes, materials } = useGLTF('jewelries-transformed.glb');
 	return (
 		<group {...props} dispose={null}>
-			{/* <PerspectiveCamera
+			<PerspectiveCamera
 				makeDefault={false}
 				far={100}
 				near={0.1}
 				fov={22.895}
 				position={[7.359, 4.958, 6.926]}
 				rotation={[-0.627, 0.71, 0.441]}
-			/> */}
+			/>
 			<mesh
 				geometry={nodes.pasted__pasted__pPlatonic7854_BLACK_0.geometry}
 				material={materials.PaletteMaterial001}

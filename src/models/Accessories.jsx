@@ -7,14 +7,14 @@ export default function Model(props) {
 	return (
 		<group {...props} dispose={null}>
 			<group position={[0, 0.15, 0]} dispose={null}>
-				{/* <PerspectiveCamera
+				<PerspectiveCamera
 					makeDefault={false}
 					far={100}
 					near={0.1}
 					fov={22.895}
 					position={[7.359, 4.958, 6.926]}
 					rotation={[-0.627, 0.71, 0.441]}
-				/> */}
+				/>
 				<mesh
 					geometry={
 						nodes.pasted__pasted__pTorus1_pasted__pasted__blinn3_0.geometry
