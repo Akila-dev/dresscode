@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 
-import { useGLTF } from '@react-three/drei';
+import { useGLTF, Float } from '@react-three/drei';
 
 export default function CanvasShoes(props) {
 	const { nodes, materials } = useGLTF('canvas-transformed.glb');

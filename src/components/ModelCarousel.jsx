@@ -79,10 +79,10 @@ const ModelContainer = ({
 const ModelCarousel = () => {
 	const [incrementFactor, setIncrementFactor] = useState(0);
 	const positions = [
-		{ x: 0.2, y: 0, z: 0, scale: 1 },
-		{ x: -6.5, y: -1.5, z: -1, scale: 0.5 },
-		{ x: -3.5, y: -0.5, z: -2, scale: 0.3 },
-		{ x: -0.2, y: 0.4, z: -2, scale: 0.2 },
+		{ x: -0.2, y: 0, z: 0, scale: 1 },
+		{ x: -8, y: -2, z: -1.1, scale: 0.55 },
+		{ x: -7, y: -1.8, z: -3, scale: 0.3 },
+		{ x: -1, y: -0.1, z: -3, scale: 0.2 },
 		{ x: 2.5, y: 1.1, z: -1, scale: 0.35 },
 	];
 	useEffect(() => {
@@ -128,7 +128,7 @@ const ModelCarousel = () => {
 						<Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/potsdamer_platz_1k.hdr" />
 						{/* <StarsCanvas /> */}
 						{/* <Backdrop /> */}
-						<group position={[0, 0.1, 0]} scale={1}>
+						<group position={[-0.2, 0.1, 0]} scale={1}>
 							<ModelContainer
 								positions={positions}
 								initial={positions[0]}
