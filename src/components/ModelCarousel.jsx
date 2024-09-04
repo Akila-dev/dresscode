@@ -60,17 +60,17 @@ const ModelContainer = ({
 				scale: initial.scale,
 				z: initial.z,
 			}}
-			// animate={{
-			// 	x: positions[nextPos].x,
-			// 	y: positions[nextPos].y,
-			// 	scale: positions[nextPos].scale,
-			// 	z: positions[nextPos].z,
-			// }}
-			// transition={{
-			// 	type: 'spring',
-			// 	duration: 2,
-			// 	bounce: 0,
-			// }}
+			animate={{
+				x: positions[nextPos].x,
+				y: positions[nextPos].y,
+				scale: positions[nextPos].scale,
+				z: positions[nextPos].z,
+			}}
+			transition={{
+				type: 'spring',
+				duration: 2,
+				bounce: 0,
+			}}
 		>
 			{children}
 		</motion.group>
