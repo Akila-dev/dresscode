@@ -1,4 +1,3 @@
-// export { default as M_Canvas } from './M_Canvas';
 export { default as M_Fashion } from './M_Fashion';
 export { default as W_Fashion } from './W_Fashion';
 export { default as Accessories } from './Accessories';
