@@ -8,6 +8,8 @@ import {
 	Environment,
 	MeshReflectorMaterial,
 	PerformanceMonitor,
+	Html,
+	useProgress,
 } from '@react-three/drei';
 import { easing } from 'maath';
 import { useSnapshot } from 'valtio';
@@ -31,6 +33,15 @@ import {
 	CanvasShoes,
 	Jewelries,
 } from '../models';
+
+function Loader() {
+	const { active, progress, errors, item, loaded, total } = useProgress();
+	return (
+		<Html center>
+			<div className="flex-center a">{progress} % loaded</div>
+		</Html>
+	);
+}
 
 const ModelContainer = ({
 	children,
@@ -123,7 +134,6 @@ const ModelCarousel = () => {
 	return (
 		<div className="w-full h-screen overflow-hidden relative bg-black">
 			<div className="w-full h-full overflow-hidden bg-black relative">
-				<Cover activeId={incrementFactor} />
 				<Canvas
 					shadows
 					dpr={dpr}
@@ -227,11 +237,18 @@ const ModelCarousel = () => {
 								{/* <Jewelries /> */}
 								{/* <CanvasShoes /> */}
 							</group>
+							<Html
+								as="div" // Wrapping element (default: 'div')
+								// wrapperClass
+								fullscreen
+							>
+								<Cover activeId={incrementFactor} />
+							</Html>
 						</Suspense>
 					</PerformanceMonitor>
 				</Canvas>
 			</div>
-			<Cover activeId={incrementFactor} />
+			{/* <Cover activeId={incrementFactor} /> */}
 		</div>
 	);
 };
