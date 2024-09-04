@@ -21,15 +21,14 @@ import { motion } from 'framer-motion-3d';
 import Cover from './Cover';
 import StarsCanvas from './StarsCanvas';
 
-// import Scene from '../../Scene';
+// import Jewelries from '../../Jewelries';
 
 import {
-	M_Canvas,
-	M_Shirt,
-	M_Watch,
-	W_Ring,
-	W_Casual,
-	W_Heels,
+	M_Fashion,
+	W_Fashion,
+	Accessories,
+	CanvasShoes,
+	Jewelries,
 } from '../models';
 
 const ModelContainer = ({
@@ -80,12 +79,11 @@ const ModelContainer = ({
 const ModelCarousel = () => {
 	const [incrementFactor, setIncrementFactor] = useState(0);
 	const positions = [
-		{ x: 0, y: 0, z: 0, scale: 1.25 },
-		{ x: -3.25, y: 0, z: -1, scale: 0.85 },
-		{ x: -1.95, y: 0, z: -2, scale: 0.35 },
-		// { x: -0.5, y: 0, z: -10, scale: 0 },
-		{ x: 0.35, y: 0, z: -2, scale: 0.35 },
-		{ x: 1.55, y: 0, z: -1, scale: 0.65 },
+		{ x: 0.2, y: 0, z: 0, scale: 1 },
+		{ x: -6.5, y: -1.5, z: -1, scale: 0.5 },
+		{ x: -3.5, y: -0.5, z: -2, scale: 0.3 },
+		{ x: -0.2, y: 0.4, z: -2, scale: 0.2 },
+		{ x: 2.5, y: 1.1, z: -1, scale: 0.35 },
 	];
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -106,10 +104,11 @@ const ModelCarousel = () => {
 					dpr={[1, 2]}
 					gl={{ preserveDrawingBuffer: false }}
 					camera={{
-						fov: 45,
+						fov: 22.9,
 						near: 0.1,
-						far: 200,
-						position: [1, 0, 2.5],
+						far: 100,
+						position: [7.359, 4.958, 6.926],
+						// rotation: [-35.94, 40.66, 25.28],
 					}}
 				>
 					<Suspense>
@@ -120,41 +119,23 @@ const ModelCarousel = () => {
 							position={[4.076, 5.904, -1.005]}
 							rotation={[-1.839, 0.602, 1.932]}
 						/>
+						<pointLight
+							intensity={100}
+							decay={2}
+							position={[5.082, 3.76, 1.074]}
+							rotation={[-1.839, 0.602, 1.932]}
+						/>
 						<Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/potsdamer_platz_1k.hdr" />
-						<StarsCanvas />
+						{/* <StarsCanvas /> */}
 						{/* <Backdrop /> */}
-						<group position={[0, -0.1, 0]}>
+						<group position={[0, 0.1, 0]} scale={1}>
 							<ModelContainer
 								positions={positions}
 								initial={positions[0]}
 								incrementFactor={incrementFactor}
 								id={0}
 							>
-								<M_Shirt />
-							</ModelContainer>
-							<ModelContainer
-								positions={positions}
-								initial={positions[1]}
-								incrementFactor={incrementFactor}
-								id={1}
-							>
-								<W_Casual />
-							</ModelContainer>
-							<ModelContainer
-								positions={positions}
-								initial={positions[2]}
-								incrementFactor={incrementFactor}
-								id={2}
-							>
-								<M_Watch />
-							</ModelContainer>
-							<ModelContainer
-								positions={positions}
-								initial={positions[3]}
-								incrementFactor={incrementFactor}
-								id={3}
-							>
-								<W_Ring />
+								<M_Fashion />
 							</ModelContainer>
 							<ModelContainer
 								positions={positions}
@@ -162,8 +143,43 @@ const ModelCarousel = () => {
 								incrementFactor={incrementFactor}
 								id={4}
 							>
-								<M_Canvas />
+								<W_Fashion />
 							</ModelContainer>
+							<ModelContainer
+								positions={positions}
+								initial={positions[3]}
+								incrementFactor={incrementFactor}
+								id={3}
+							>
+								<Accessories />
+							</ModelContainer>
+							<ModelContainer
+								positions={positions}
+								initial={positions[2]}
+								incrementFactor={incrementFactor}
+								id={2}
+							>
+								<Jewelries />
+							</ModelContainer>
+							<ModelContainer
+								positions={positions}
+								initial={positions[1]}
+								incrementFactor={incrementFactor}
+								id={1}
+							>
+								<CanvasShoes />
+							</ModelContainer>
+							{/* <M_Fashion position={[0, 0, 0]} scale={1} />
+							<M_Fashion position={[-6.5, -1.5, -1]} scale={0.5} />
+							<M_Fashion position={[-3.5, -0.5, -2]} scale={0.5} />
+							<M_Fashion position={[-0.2, 0.4, -2]} scale={0.4} />
+							<M_Fashion position={[2.5, 1.1, -1]} scale={0.35} /> */}
+
+							{/* <M_Fashion /> */}
+							{/* <W_Fashion /> */}
+							{/* <Accessories /> */}
+							{/* <Jewelries /> */}
+							{/* <CanvasShoes /> */}
 						</group>
 					</Suspense>
 				</Canvas>

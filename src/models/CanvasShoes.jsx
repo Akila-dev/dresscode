@@ -1,0 +1,26 @@
+/* eslint-disable react/no-unknown-property */
+
+import { useGLTF } from '@react-three/drei';
+
+export default function CanvasShoes(props) {
+	const { nodes, materials } = useGLTF('canvas-transformed.glb');
+	return (
+		<group {...props} dispose={null}>
+			<group
+				scale={1.65}
+				rotation={[0.2, -1, 0.65]}
+				position={[-0.4, -0.4, 0]}
+				dispose={null}
+			>
+				<mesh
+					geometry={nodes.defaultMaterial.geometry}
+					material={materials.NikeShoe}
+					position={[-0.067, 0.109, -0.673]}
+					rotation={[-1.468, 0.25, 1.878]}
+				/>
+			</group>
+		</group>
+	);
+}
+
+useGLTF.preload('canvas-transformed.glb');
