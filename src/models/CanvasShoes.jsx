@@ -13,10 +13,11 @@ export default function CanvasShoes(props) {
 				dispose={null}
 			>
 				<Float
-					speed={2}
-					rotationIntensity={1}
-					floatIntensity={1}
+					speed={0.75}
+					rotationIntensity={0.5}
+					floatIntensity={0.5}
 					floatingRange={[0, 0.1]}
+					autoInvalidate
 				>
 					<mesh
 						geometry={nodes.defaultMaterial.geometry}

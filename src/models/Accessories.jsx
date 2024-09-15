@@ -8,9 +8,10 @@ export default function Model(props) {
 		<group {...props} dispose={null}>
 			<group position={[0, -0.5, 0]} dispose={null}>
 				<Float
-					speed={2}
-					rotationIntensity={1}
-					floatIntensity={1}
+					speed={0.75}
+					rotationIntensity={0.5}
+					autoInvalidate
+					floatIntensity={0.5}
 					floatingRange={[0, 0.1]}
 				>
 					<group>
@@ -38,9 +39,10 @@ export default function Model(props) {
 					</group>
 				</Float>
 				<Float
-					speed={2}
-					rotationIntensity={1}
-					floatIntensity={1}
+					speed={0.75}
+					rotationIntensity={0.5}
+					autoInvalidate
+					floatIntensity={0.5}
 					floatingRange={[0, 0.1]}
 				>
 					<mesh

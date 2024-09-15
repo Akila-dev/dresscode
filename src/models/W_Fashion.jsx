@@ -8,9 +8,10 @@ export default function W_Fashion(props) {
 		<group {...props} dispose={null}>
 			<group position={[0.5, 0, 0]} dispose={null}>
 				<Float
-					speed={1}
-					rotationIntensity={0.5}
-					floatIntensity={0.5}
+					autoInvalidate
+					speed={0.75}
+					rotationIntensity={0.25}
+					floatIntensity={0.15}
 					floatingRange={[0, 0.1]}
 				>
 					<mesh
@@ -25,12 +26,13 @@ export default function W_Fashion(props) {
 					/>
 				</Float>
 				<Float
-					speed={1}
-					rotationIntensity={2}
-					floatIntensity={1}
+					autoInvalidate
+					speed={0.75}
+					rotationIntensity={0.5}
+					floatIntensity={0.5}
 					floatingRange={[0, 0.1]}
 				>
-					<group position={[-0.75, 0, 0.25]}>
+					<mesh position={[-0.75, 0, 0.25]}>
 						<mesh
 							geometry={nodes.Object_2.geometry}
 							material={materials.wire_204204204_1}
@@ -45,15 +47,16 @@ export default function W_Fashion(props) {
 							rotation={[-Math.PI / 2, 0, 0]}
 							scale={3.668}
 						/>
-					</group>
+					</mesh>
 				</Float>
 				<Float
-					speed={2}
-					rotationIntensity={1}
-					floatIntensity={1}
+					autoInvalidate
+					speed={0.75}
+					rotationIntensity={0.5}
+					floatIntensity={0.5}
 					floatingRange={[0, 0.1]}
 				>
-					<group position={[0.5, 0.5, 0.15]}>
+					<mesh position={[0.5, 0.5, 0.15]}>
 						<mesh
 							geometry={nodes.Object_10.geometry}
 							material={materials.PaletteMaterial001}
@@ -68,7 +71,7 @@ export default function W_Fashion(props) {
 							rotation={[-Math.PI / 2, 0, 0.413]}
 							scale={0.045}
 						/>
-					</group>
+					</mesh>
 				</Float>
 			</group>
 		</group>

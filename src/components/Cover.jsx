@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { BsArrowReturnRight } from 'react-icons/bs';
 
 const coverText = [
@@ -21,20 +21,6 @@ const coverText = [
 			{
 				text: 'Shop Now',
 				link: 'https://dresscodemarket.com/collections/all-women-collections',
-			},
-		],
-	},
-	{
-		header: 'Shoe Store',
-		text: 'Official, Casual and Sports, Slides, Sneakers, Sandals and more.',
-		buttons: [
-			{
-				text: 'Shop for Men',
-				link: 'https://dresscodemarket.com/collections/mens-shoes-1',
-			},
-			{
-				text: 'Shop for Women',
-				link: 'https://dresscodemarket.com/collections/womens-shoes-1',
 			},
 		],
 	},
@@ -62,6 +48,20 @@ const coverText = [
 			},
 		],
 	},
+	{
+		header: 'Shoe Store',
+		text: 'Official, Casual and Sports, Slides, Sneakers, Sandals and more.',
+		buttons: [
+			{
+				text: 'Shop for Men',
+				link: 'https://dresscodemarket.com/collections/mens-shoes-1',
+			},
+			{
+				text: 'Shop for Women',
+				link: 'https://dresscodemarket.com/collections/womens-shoes-1',
+			},
+		],
+	},
 ];
 
 const Cover = ({ activeId }) => {
@@ -69,6 +69,18 @@ const Cover = ({ activeId }) => {
 		animate: (i) => ({
 			opacity: [0, 1],
 			y: [15, 0],
+			// rotateX: [90, 0],
+
+			transition: {
+				type: 'spring',
+				duration: 2,
+				// ease: 'easeIn',
+				delay: i * 0.1,
+			},
+		}),
+		exit: (i) => ({
+			opacity: [1, 0],
+			y: [0, 15],
 			// rotateX: [90, 0],
 
 			transition: {
@@ -117,11 +129,13 @@ const Cover = ({ activeId }) => {
 						</div>
 					</div>
 
-					{coverText.map(
-						(item, i) =>
-							i === activeId && (
+					{coverText.map((item, i) => (
+						<AnimatePresence key={i}>
+							{i === activeId && (
 								<motion.div
 									animate="animate"
+									// exit="exit"
+									transition={{ delay: 0.5 }}
 									key={i}
 									className="max-w-none md:max-w-[500px] lg:max-w-[30vw] space-y-[2.5vh] lg:space-y-[3vh]"
 								>
@@ -159,8 +173,9 @@ const Cover = ({ activeId }) => {
 										))}
 									</div>
 								</motion.div>
-							)
-					)}
+							)}
+						</AnimatePresence>
+					))}
 
 					{/* Displayed */}
 					{/* <div className="max-w-[30vw] lg:space-y-[3vh]">

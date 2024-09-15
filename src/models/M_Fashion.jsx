@@ -24,10 +24,11 @@ export default function Model(props) {
 					<primitive object={nodes.Spot.target} position={[0, 0, -1]} />
 				</spotLight>
 				<Float
-					speed={1}
-					rotationIntensity={1}
-					floatIntensity={0.5}
+					speed={0.75}
+					rotationIntensity={0.5}
+					floatIntensity={0.25}
 					floatingRange={[0, 0.1]}
+					autoInvalidate
 				>
 					<mesh
 						geometry={nodes.T_Shirt_male.geometry}
@@ -38,10 +39,11 @@ export default function Model(props) {
 					/>
 				</Float>
 				<Float
-					speed={2}
-					rotationIntensity={1}
-					floatIntensity={1}
+					speed={0.75}
+					rotationIntensity={0.5}
+					floatIntensity={0.5}
 					floatingRange={[0, 0.1]}
+					autoInvalidate
 				>
 					<mesh
 						geometry={nodes.Object_2.geometry}
@@ -52,32 +54,35 @@ export default function Model(props) {
 					/>
 				</Float>
 				<Float
-					speed={2}
-					rotationIntensity={1}
-					floatIntensity={1}
+					speed={0.75}
+					rotationIntensity={0.5}
+					floatIntensity={0.5}
 					floatingRange={[0, 0.1]}
+					autoInvalidate
 				>
-					<mesh
-						geometry={nodes.Object_6.geometry}
-						material={materials.PaletteMaterial001}
-						position={[1.913, 0.176, -0.049]}
-						rotation={[1.93, 0.731, -1.261]}
-						scale={[0.144, 0.125, 0.168]}
-					/>
-					<mesh
-						geometry={nodes.Object_14.geometry}
-						material={materials.Clavder_Gold_bevel}
-						position={[1.62, 0.026, -0.402]}
-						rotation={[1.879, 0.701, 2.135]}
-						scale={[0.009, 0.008, 0.013]}
-					/>
-					<mesh
-						geometry={nodes.Object_79.geometry}
-						material={materials.PaletteMaterial002}
-						position={[1.956, 0.206, -0.017]}
-						rotation={[-2.572, 0.229, -2.326]}
-						scale={[0.084, 0.064, 0.072]}
-					/>
+					<mesh>
+						<mesh
+							geometry={nodes.Object_6.geometry}
+							material={materials.PaletteMaterial001}
+							position={[1.913, 0.176, -0.049]}
+							rotation={[1.93, 0.731, -1.261]}
+							scale={[0.144, 0.125, 0.168]}
+						/>
+						<mesh
+							geometry={nodes.Object_14.geometry}
+							material={materials.Clavder_Gold_bevel}
+							position={[1.62, 0.026, -0.402]}
+							rotation={[1.879, 0.701, 2.135]}
+							scale={[0.009, 0.008, 0.013]}
+						/>
+						<mesh
+							geometry={nodes.Object_79.geometry}
+							material={materials.PaletteMaterial002}
+							position={[1.956, 0.206, -0.017]}
+							rotation={[-2.572, 0.229, -2.326]}
+							scale={[0.084, 0.064, 0.072]}
+						/>
+					</mesh>
 				</Float>
 			</group>
 		</group>

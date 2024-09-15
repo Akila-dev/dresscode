@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ModelCarousel } from './components';
+import { Hero } from './components';
 
 function App() {
 	const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +16,7 @@ function App() {
 				</div>
 			) : (
 				<div className="">
-					<ModelCarousel />
+					<Hero />
 				</div>
 			)}
 		</>

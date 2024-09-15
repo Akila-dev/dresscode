@@ -8,10 +8,11 @@ export default function Jewelries(props) {
 		<group {...props} dispose={null}>
 			<group position={[0.3, 0, 0]} scale={0.85} dispose={null}>
 				<Float
-					speed={2}
-					rotationIntensity={0.5}
-					floatIntensity={0.5}
+					speed={0.75}
+					rotationIntensity={0.25}
+					floatIntensity={0.1}
 					floatingRange={[0]}
+					autoInvalidate
 				>
 					<mesh
 						geometry={nodes.pasted__pasted__pPlatonic7854_BLACK_0.geometry}
