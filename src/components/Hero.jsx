@@ -40,7 +40,7 @@ const Hero = () => {
 					setIncrementFactor(3);
 				} else if (
 					videoRef.current.currentTime >= 19.5 &&
-					videoRef.current.currentTime < 23.5
+					videoRef.current.currentTime < 24
 				) {
 					setIncrementFactor(4);
 				} else {
@@ -49,7 +49,7 @@ const Hero = () => {
 			}, 500);
 			return () => clearInterval(interval);
 		}
-	}, []);
+	}, [isLoading]);
 
 	return isLoading ? (
 		<div className="flex-center bg-black w-full h-screen">

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { BsArrowReturnRight } from 'react-icons/bs';
 
 const coverText = [
@@ -78,18 +78,6 @@ const Cover = ({ activeId }) => {
 				delay: i * 0.1,
 			},
 		}),
-		exit: (i) => ({
-			opacity: [1, 0],
-			y: [0, 15],
-			// rotateX: [90, 0],
-
-			transition: {
-				type: 'spring',
-				duration: 1.5,
-				// ease: 'easeIn',
-				delay: i * 0.1,
-			},
-		}),
 	};
 	return (
 		<div className="w-full h-full absolute top-0 left-0 flex-bottom text-cente">
@@ -129,13 +117,11 @@ const Cover = ({ activeId }) => {
 						</div>
 					</div>
 
-					{coverText.map((item, i) => (
-						<AnimatePresence key={i}>
-							{i === activeId && (
+					{coverText.map(
+						(item, i) =>
+							i === activeId && (
 								<motion.div
 									animate="animate"
-									// exit="exit"
-									transition={{ delay: 0.5 }}
 									key={i}
 									className="max-w-none md:max-w-[500px] lg:max-w-[30vw] space-y-[2.5vh] lg:space-y-[3vh]"
 								>
@@ -173,9 +159,8 @@ const Cover = ({ activeId }) => {
 										))}
 									</div>
 								</motion.div>
-							)}
-						</AnimatePresence>
-					))}
+							)
+					)}
 
 					{/* Displayed */}
 					{/* <div className="max-w-[30vw] lg:space-y-[3vh]">
