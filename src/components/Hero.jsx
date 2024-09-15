@@ -81,7 +81,7 @@ const Hero = () => {
 						autoPlay
 						muted
 						loop
-						className="w-full h-screen object-cover"
+						className="w-full h-screen object-cove"
 					>
 						<source src={desktopHeroVideo} type="video/mp4" />
 						Your browser does not support videos.
